@@ -5,4 +5,4 @@ go:
 os:
   - linux
 script: 
-  - go run main.go
+  -sudo go run main.go
