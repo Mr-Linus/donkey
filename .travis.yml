@@ -2,7 +2,7 @@ sudo: required
 os:
   - linux
 install:
-  - sudo apt-get install go-lang
+  - sudo apt-get install golang-go
 script: 
   - uname -a 
   - sudo go run main.go
