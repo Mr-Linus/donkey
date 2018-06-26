@@ -1,9 +1,10 @@
 sudo: required
-language: go
-go:
-  - "1.10"
 os:
   - linux
+addons:
+  apt:
+    packages:
+      - go-lang
 script: 
   - uname -a 
   - sudo go run main.go
