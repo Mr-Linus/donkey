@@ -1,9 +1,0 @@
-sudo: required
-os:
-  - linux
-install:
-  - sudo apt-get install golang-go
-  - go get log os os/exec log syscall
-script: 
-  - uname -a 
-  - sudo go run main.go
