@@ -2,7 +2,7 @@ sudo: required
 language: go
 go:
   - "1.10"
-os:
+  os:
   - linux
-script: 
-  -sudo go run main.go
+  script: 
+  - sudo go run main.go
