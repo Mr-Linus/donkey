@@ -1,39 +1,34 @@
 package main
 
 import (
-	"log"
+	log "github.com/Sirupsen/logrus"
+	"github.com/urfave/cli"
 	"os"
-	"os/exec"
-	"syscall"
 )
 
-func main() {
-	cmd := exec.Command("sh")
-	cmd.SysProcAttr = &syscall.SysProcAttr{
-		Cloneflags: syscall.CLONE_NEWUTS | syscall.CLONE_NEWIPC | syscall.CLONE_NEWPID | syscall.CLONE_NEWNS |
-			syscall.CLONE_NEWUSER |
-			syscall.CLONE_NEWNET,
-		UidMappings: []syscall.SysProcIDMap{
-			{
-				ContainerID: 1234,
-				HostID:      0,
-				Size:        1,
-			},
-		},
-		GidMappings: []syscall.SysProcIDMap{
-			{
-				ContainerID: 1234,
-				HostID:      0,
-				Size:        1,
-			},
-		},
-	}
-	cmd.Stdin = os.Stdin
-	cmd.Stdout = os.Stdout
-	cmd.Stderr = os.Stderr
+const usage = `donkey is a simple container runtime implementation.
+			   The purpose of this project is to learn how docker works and how to write a docker by ourselves
+			   Enjoy it, just for fun.`
 
-	if err := cmd.Run(); err != nil {
+func main() {
+	app := cli.NewApp()
+	app.Name = "mydocker"
+	app.Usage = usage
+
+	app.Commands = []cli.Command{
+		initCommand,
+		runCommand,
+	}
+
+	app.Before = func(context *cli.Context) error {
+		// Log as JSON instead of the default ASCII formatter.
+		log.SetFormatter(&log.JSONFormatter{})
+
+		log.SetOutput(os.Stdout)
+		return nil
+	}
+
+	if err := app.Run(os.Args); err != nil {
 		log.Fatal(err)
 	}
-	os.Exit(-1)
 }
