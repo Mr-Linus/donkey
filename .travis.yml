@@ -1,8 +1,0 @@
-sudo: required
-language: go
-go:
-  - "1.7"
-os:
-  - linux
-script: 
-  - sudo ./donkey run -ti /bin/ls
