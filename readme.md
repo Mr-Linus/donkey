@@ -2,7 +2,7 @@
 
 一个简单的用go实现的容器引擎
 
-[donkey](/img/logo.png)
+![donkey](/img/logo.png)
 ### 使用环境
 - OS: Ubuntu 14.04
 - Kernel: 3.13.0-153-generic
