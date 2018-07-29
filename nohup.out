@@ -1,0 +1,4 @@
+stress: FAIL: [12] (416) <-- worker 13 got signal 9
+stress: WARN: [12] (418) now reaping child worker processes
+stress: FAIL: [12] (452) failed run completed in 0s
+stress: info: [12] dispatching hogs: 0 cpu, 0 io, 1 vm, 0 hdd

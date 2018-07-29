@@ -1,8 +1,8 @@
 ### Donkey
 
-一个简单的用go实现的容器引擎
+#### 一个简单的用go实现的容器引擎
 
-![donkey](/img/logo.png)
+![donkey](./img/logo.png)
 ### 使用环境
 - OS: Ubuntu 14.04
 - Kernel: 3.13.0-153-generic
@@ -31,6 +31,13 @@ root@vagrant-ubuntu-trusty-64:/home/vagrant/works/donkey# donkey run -ti /bin/ls
 {"level":"info","msg":"command /bin/ls","time":"2018-07-28T18:01:48Z"}
 {"level":"info","msg":"command /bin/ls","time":"2018-07-28T18:01:48Z"}
 container  donkey  main_command.go  main.go  readme.md	run.go
+
+#资源限制
+donkey  run -ti -m 100m -cpushare 512 /bin/sh
+{"level":"info","msg":"command all is /bin/sh","time":"2018-07-29T15:24:47Z"}
+{"level":"info","msg":"init come on","time":"2018-07-29T15:24:47Z"}
+{"level":"info","msg":"Find path /bin/sh","time":"2018-07-29T15:24:47Z"}
+#
 ```
 
 ### 开发日志
