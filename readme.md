@@ -47,6 +47,8 @@ Date: 2018.6.27
 - V3.0 
 Date: 2018.7.28
 构建程序大体架构,参考Docker实现命令行构建容器
-
+- V3.1
+Date: 2018.7.29
+增加CPU,Memory资源限制功能
 
 ![img-source-from-https://github.com/docker/dockercraft](https://github.com/docker/dockercraft/raw/master/docs/img/contribute.png?raw=true)
