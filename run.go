@@ -28,6 +28,7 @@ func Run(tty bool, comArray []string, res *subsystems.ResourceConfig) {
 	sendInitCommand(comArray, writePipe)
 	parent.Wait()
 }
+
 func sendInitCommand(comArray []string, writePipe *os.File) {
 	command := strings.Join(comArray, " ")
 	log.Infof("command all is %s", command)

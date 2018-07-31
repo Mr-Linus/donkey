@@ -25,7 +25,7 @@ hello
     5 pts/0    00:00:00 ps
 
 # 执行命令
-donkey run -ti /bin/ls
+donkey run -ti ls
 root@vagrant-ubuntu-trusty-64:/home/vagrant/works/donkey# donkey run -ti /bin/ls
 {"level":"info","msg":"init come on","time":"2018-07-28T18:01:48Z"}
 {"level":"info","msg":"command /bin/ls","time":"2018-07-28T18:01:48Z"}
@@ -38,6 +38,14 @@ donkey  run -ti -m 100m -cpushare 512 /bin/sh
 {"level":"info","msg":"init come on","time":"2018-07-29T15:24:47Z"}
 {"level":"info","msg":"Find path /bin/sh","time":"2018-07-29T15:24:47Z"}
 #
+
+# 运行脚本
+root@vagrant-ubuntu-trusty-64:/home/vagrant/works/donkey# donkey  run -ti -m 100m  bash test.sh
+{"level":"info","msg":"command all is bash test.sh","time":"2018-07-31T16:08:55Z"}
+{"level":"info","msg":"init come on","time":"2018-07-31T16:08:55Z"}
+{"level":"info","msg":"Find path /bin/bash","time":"2018-07-31T16:08:55Z"}
+stress: info: [4] dispatching hogs: 0 cpu, 0 io, 1 vm, 0 hdd
+
 ```
 
 ### 开发日志
@@ -50,5 +58,8 @@ Date: 2018.7.28
 - V3.1
 Date: 2018.7.29
 增加CPU,Memory资源限制功能
+- V3.2
+Date: 2018.8.1
+增加运行脚本功能                                                                                              
 
 ![img-source-from-https://github.com/docker/dockercraft](https://github.com/docker/dockercraft/raw/master/docs/img/contribute.png?raw=true)
