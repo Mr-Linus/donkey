@@ -46,6 +46,17 @@ root@vagrant-ubuntu-trusty-64:/home/vagrant/works/donkey# donkey  run -ti -m 100
 {"level":"info","msg":"Find path /bin/bash","time":"2018-07-31T16:08:55Z"}
 stress: info: [4] dispatching hogs: 0 cpu, 0 io, 1 vm, 0 hdd
 
+# 使用镜像 busybox
+donkey run -ti sh
+{"level":"info","msg":"command all is sh","time":"2018-08-04T10:02:24Z"}
+{"level":"info","msg":"init come on","time":"2018-08-04T10:02:24Z"}
+{"level":"info","msg":"Current location is /home/vagrant/works/donkey/images/busybox","time":"2018-08-04T10:02:24Z"}
+{"level":"info","msg":"Find path /bin/sh","time":"2018-08-04T10:02:24Z"}
+/ # busybox
+BusyBox v1.29.2 (2018-07-31 20:19:16 UTC) multi-call binary.
+BusyBox is copyrighted by many authors between 1998-2015.
+Licensed under GPLv2. See source distribution for detailed
+copyright notices.
 ```
 
 ### 开发日志
@@ -61,5 +72,8 @@ Date: 2018.7.29
 - V3.2
 Date: 2018.8.1
 增加运行脚本功能                                                                                              
+- V3.2
+Date: 2018.8.4
+增加Busybox镜像功能
 
 ![img-source-from-https://github.com/docker/dockercraft](https://github.com/docker/dockercraft/raw/master/docs/img/contribute.png?raw=true)
