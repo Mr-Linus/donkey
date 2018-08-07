@@ -51,7 +51,6 @@ func setUpMount() {
 	}
 	log.Infof("Current location is %s", pwd)
 	pivotRoot(pwd)
-    
 	//mount proc
 	defaultMountFlags := syscall.MS_NOEXEC | syscall.MS_NOSUID | syscall.MS_NODEV
 	syscall.Mount("proc", "/proc", "proc", uintptr(defaultMountFlags), "")
