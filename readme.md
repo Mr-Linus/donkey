@@ -72,8 +72,10 @@ Date: 2018.7.29
 - V3.2
 Date: 2018.8.1
 增加运行脚本功能                                                                                              
-- V3.2
+- V3.2.1
 Date: 2018.8.4
 增加Busybox镜像功能
+- V3.3
+为容器运行增加写层
 
 ![img-source-from-https://github.com/docker/dockercraft](https://github.com/docker/dockercraft/raw/master/docs/img/contribute.png?raw=true)
