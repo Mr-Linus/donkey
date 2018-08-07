@@ -44,7 +44,6 @@ func readUserCommand() []string {
 }
 
 func setUpMount() {
-	os.Chdir("images/busybox")
 	pwd, err := os.Getwd()
 	if err != nil {
 		log.Errorf("Get current location error %v", err)

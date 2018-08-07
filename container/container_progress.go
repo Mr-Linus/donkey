@@ -1,7 +1,7 @@
 package container
 
 import (
-	log "github.com/Sirupsen/logrus"
+    log "github.com/Sirupsen/logrus"
 	"os"
 	"os/exec"
 	"syscall"
@@ -24,7 +24,8 @@ func NewParentProcess(tty bool) (*exec.Cmd, *os.File) {
 		cmd.Stderr = os.Stderr
 	}
 	cmd.ExtraFiles = []*os.File{readPipe}
-	return cmd, writePipe
+	mntURL := "mnt"
+	rootURL := "/root/"
 	cmd.Dir = "images/busybox"
 	return cmd, writePipe
 }
