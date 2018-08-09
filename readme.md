@@ -57,6 +57,18 @@ BusyBox v1.29.2 (2018-07-31 20:19:16 UTC) multi-call binary.
 BusyBox is copyrighted by many authors between 1998-2015.
 Licensed under GPLv2. See source distribution for detailed
 copyright notices.
+
+# 映射目录
+donkey run -ti -v ./cgroups/:/cgroups sh
+{"level":"error","msg":"Mkdir dir ./images/rw/ error. mkdir ./images/rw/: file exists","time":"2018-08-09T10:21:18Z"}
+{"level":"info","msg":"Mkdir parent dir ./cgroups/ error. mkdir ./cgroups/: file exists","time":"2018-08-09T10:21:18Z"}
+{"level":"info","msg":"[\"./cgroups/\" \"/cgroups\"]","time":"2018-08-09T10:21:18Z"}
+{"level":"info","msg":"command all is sh","time":"2018-08-09T10:21:18Z"}
+{"level":"info","msg":"init come on","time":"2018-08-09T10:21:18Z"}
+{"level":"info","msg":"Current location is /root/donkey/images/mnt","time":"2018-08-09T10:21:18Z"}
+{"level":"info","msg":"Find path /bin/sh","time":"2018-08-09T10:21:18Z"}
+/ # ls
+bin      cgroups  dev      etc      home     proc     root     sys      tmp      usr      var
 ```
 
 ### 开发日志
@@ -77,5 +89,7 @@ Date: 2018.8.4
 增加Busybox镜像功能
 - V3.3
 为容器运行增加写层
+- V3.4 
+增加容器映射目录功能
 
 ![img-source-from-https://github.com/docker/dockercraft](https://github.com/docker/dockercraft/raw/master/docs/img/contribute.png?raw=true)
