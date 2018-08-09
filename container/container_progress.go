@@ -163,7 +163,7 @@ func DeleteMountPointWithVolume(rootURL string, mntURL string, volumeURLs []stri
 }
 
 func DeleteWriteLayer(rootURL string) {
-	writeURL := rootURL + "writeLayer/"
+	writeURL := rootURL + "rw/"
 	if err := os.RemoveAll(writeURL); err != nil {
 		log.Errorf("Remove dir %s error %v", writeURL, err)
 	}
