@@ -73,6 +73,12 @@ bin      cgroups  dev      etc      home     proc     root     sys      tmp     
 # 镜像打包
 donkey commit busybox
 images/busybox.tar
+
+# 后台运行
+donkey run -d echo hello
+{"level":"info","msg":"createTty false","time":"2018-08-14T09:30:36Z"}
+{"level":"info","msg":"command all is echo hello","time":"2018-08-14T09:30:36Z"}
+
 ```
 
 ### 开发日志
@@ -100,5 +106,8 @@ Date: 2018.8.9
 - V3.5 
 Date: 2018.8.14
 增加镜像打包功能
+- V3.5.1
+Date: 2018.8.14
+增加镜像打包功能， 增加容器后台运行功能
 
 ![img-source-from-https://github.com/docker/dockercraft](https://github.com/docker/dockercraft/raw/master/docs/img/contribute.png?raw=true)

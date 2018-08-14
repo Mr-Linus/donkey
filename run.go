@@ -19,12 +19,17 @@ func Run(tty bool, comArray []string, res *subsystems.ResourceConfig, volume str
 	if err := parent.Start(); err != nil {
 		log.Error(err)
 	}
+	//cgroup-mananger 
 	cgroupManager := cgroups.NewCgroupManager("donkey-cgroup")
 	defer cgroupManager.Destroy()
 	cgroupManager.Set(res)
 	cgroupManager.Apply(parent.Process.Pid)
+
+	
 	sendInitCommand(comArray, writePipe)
-	parent.Wait()
+	if tty {
+		parent.Wait()
+	}
 	mntURL := "./images/mnt/"
 	rootURL := "./images/"
 	container.DeleteWorkSpace(rootURL, mntURL, volume)
