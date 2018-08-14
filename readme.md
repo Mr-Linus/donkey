@@ -69,6 +69,10 @@ donkey run -ti -v ./cgroups/:/cgroups sh
 {"level":"info","msg":"Find path /bin/sh","time":"2018-08-09T10:21:18Z"}
 / # ls
 bin      cgroups  dev      etc      home     proc     root     sys      tmp      usr      var
+
+# 镜像打包
+donkey commit busybox
+images/busybox.tar
 ```
 
 ### 开发日志
@@ -87,9 +91,11 @@ Date: 2018.8.1
 - V3.2.1
 Date: 2018.8.4
 增加Busybox镜像功能
-- V3.3
+- V3.3 2018.8.7 
 为容器运行增加写层
-- V3.4 
+- V3.4 2018.8.9
 增加容器映射目录功能
+- V3.5 2018。8.14
+增加镜像打包功能
 
 ![img-source-from-https://github.com/docker/dockercraft](https://github.com/docker/dockercraft/raw/master/docs/img/contribute.png?raw=true)
