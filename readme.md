@@ -95,7 +95,7 @@ Date: 2018.8.4
 为容器运行增加写层
 - V3.4 2018.8.9
 增加容器映射目录功能
-- V3.5 2018。8.14
+- V3.5 2018.8.14
 增加镜像打包功能
 
 ![img-source-from-https://github.com/docker/dockercraft](https://github.com/docker/dockercraft/raw/master/docs/img/contribute.png?raw=true)
