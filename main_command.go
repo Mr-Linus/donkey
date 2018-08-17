@@ -4,14 +4,13 @@ import (
 	"fmt"
 	log "github.com/Sirupsen/logrus"
 	"github.com/urfave/cli"
-	"./container"
 	"./cgroups/subsystems"
+	"./container"
 )
 
 var runCommand = cli.Command{
 	Name: "run",
-	Usage: `Create a container with namespace and cgroups limit
-			donkey run -ti [command]`,
+	Usage: `Create a container with namespace and cgroups limit ie: donkey run -ti [command]`,
 	Flags: []cli.Flag{
 		cli.BoolFlag{
 			Name:  "ti",
@@ -22,20 +21,20 @@ var runCommand = cli.Command{
 			Usage: "detach container",
 		},
 		cli.StringFlag{
-			Name: "m",
+			Name:  "m",
 			Usage: "memory limit",
 		},
 		cli.StringFlag{
-			Name: "cpushare",
+			Name:  "cpushare",
 			Usage: "cpushare limit",
 		},
 		cli.StringFlag{
-			Name: "cpuset",
+			Name:  "cpuset",
 			Usage: "cpuset limit",
 		},
 		cli.StringFlag{
-			Name:  "v",
-			Usage: "volume",
+			Name:  "name",
+			Usage: "container name",
 		},
 	},
 	Action: func(context *cli.Context) error {
@@ -48,17 +47,18 @@ var runCommand = cli.Command{
 		}
 		createTty := context.Bool("ti")
 		detach := context.Bool("d")
+
 		if createTty && detach {
 			return fmt.Errorf("ti and d paramter can not both provided")
 		}
 		resConf := &subsystems.ResourceConfig{
 			MemoryLimit: context.String("m"),
-			CpuSet: context.String("cpuset"),
-			CpuShare:context.String("cpushare"),
+			CpuSet:      context.String("cpuset"),
+			CpuShare:    context.String("cpushare"),
 		}
-		volume := context.String("v")
 		log.Infof("createTty %v", createTty)
-		Run(createTty, cmdArray, resConf, volume)
+		containerName := context.String("name")
+		Run(createTty, cmdArray, resConf, containerName)
 		return nil
 	},
 }
@@ -70,6 +70,15 @@ var initCommand = cli.Command{
 		log.Infof("init come on")
 		err := container.RunContainerInitProcess()
 		return err
+	},
+}
+
+var listCommand = cli.Command{
+	Name:  "ps",
+	Usage: "list all the containers",
+	Action: func(context *cli.Context) error {
+		ListContainers()
+		return nil
 	},
 }
 

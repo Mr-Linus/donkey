@@ -6,8 +6,8 @@ import (
 	"io/ioutil"
 	"os"
 	"os/exec"
-	"strings"
 	"path/filepath"
+	"strings"
 	"syscall"
 )
 
@@ -31,9 +31,9 @@ func RunContainerInitProcess() error {
 	return nil
 }
 
-
 func readUserCommand() []string {
 	pipe := os.NewFile(uintptr(3), "pipe")
+	defer pipe.Close()
 	msg, err := ioutil.ReadAll(pipe)
 	if err != nil {
 		log.Errorf("init read pipe error %v", err)
@@ -43,6 +43,9 @@ func readUserCommand() []string {
 	return strings.Split(msgStr, " ")
 }
 
+/**
+Init 挂载点
+*/
 func setUpMount() {
 	pwd, err := os.Getwd()
 	if err != nil {
@@ -51,12 +54,13 @@ func setUpMount() {
 	}
 	log.Infof("Current location is %s", pwd)
 	pivotRoot(pwd)
+
 	//mount proc
 	defaultMountFlags := syscall.MS_NOEXEC | syscall.MS_NOSUID | syscall.MS_NODEV
 	syscall.Mount("proc", "/proc", "proc", uintptr(defaultMountFlags), "")
+
 	syscall.Mount("tmpfs", "/dev", "tmpfs", syscall.MS_NOSUID|syscall.MS_STRICTATIME, "mode=755")
 }
-
 
 func pivotRoot(root string) error {
 	/**

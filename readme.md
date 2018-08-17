@@ -79,35 +79,42 @@ donkey run -d echo hello
 {"level":"info","msg":"createTty false","time":"2018-08-14T09:30:36Z"}
 {"level":"info","msg":"command all is echo hello","time":"2018-08-14T09:30:36Z"}
 
+# 容器状态显示
+donkey ps
+ID           NAME         PID         STATUS      COMMAND     CREATED
+6575021233   6575021233   2731        running     top         2018-08-17 14:18:46
 ```
 
 ### 开发日志
-- V2.0
+- V2.0.0
 Date: 2018.6.27
 单一程序实现简单容器构建,实现Namespace隔离
-- V3.0 
+- V3.0.0 
 Date: 2018.7.28
 构建程序大体架构,参考Docker实现命令行构建容器
-- V3.1
+- V3.1.0
 Date: 2018.7.29
 增加CPU,Memory资源限制功能
-- V3.2
+- V3.2.0
 Date: 2018.8.1
 增加运行脚本功能                                                                                              
 - V3.2.1
 Date: 2018.8.4
 增加Busybox镜像功能
-- V3.3 
+- V3.3.0 
 Date: 2018.8.7 
 为容器运行增加写层
-- V3.4 
+- V3.4.0
 Date: 2018.8.9
 增加容器映射目录功能
-- V3.5 
+- V3.5.0
 Date: 2018.8.14
 增加镜像打包功能
 - V3.5.1
 Date: 2018.8.14
 增加镜像打包功能， 增加容器后台运行功能
+- V4.0.0-Alpha
+- 增加容器状态显示功能
+- 删除Volume，功能在4.0版本会进行重构
 
 ![img-source-from-https://github.com/docker/dockercraft](https://github.com/docker/dockercraft/raw/master/docs/img/contribute.png?raw=true)

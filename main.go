@@ -12,13 +12,14 @@ const usage = `donkey is a simple container runtime implementation.
 
 func main() {
 	app := cli.NewApp()
-	app.Name = "Donkey"
+	app.Name = "donkey"
 	app.Usage = usage
 
 	app.Commands = []cli.Command{
 		initCommand,
 		runCommand,
 		commitCommand,
+		listCommand,
 	}
 
 	app.Before = func(context *cli.Context) error {
