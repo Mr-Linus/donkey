@@ -83,6 +83,18 @@ donkey run -d echo hello
 donkey ps
 ID           NAME         PID         STATUS      COMMAND     CREATED
 6575021233   6575021233   2731        running     top         2018-08-17 14:18:46
+
+#容器日志显示
+donkey run --name test -d echo hello
+{"level":"info","msg":"createTty false","time":"2018-08-17T15:17:29Z"}
+{"level":"info","msg":"command all is echo hello","time":"2018-08-17T15:17:29Z"}
+{"level":"warning","msg":"remove cgroup fail remove /sys/fs/cgroup/memory/donkey-cgroup/memory.kmem.tcp.max_usage_in_bytes: operation not permitted","time":"2018-08-17T15:17:29Z"}
+{"level":"warning","msg":"remove cgroup fail remove /sys/fs/cgroup/cpu/donkey-cgroup/cpu.stat: operation not permitted","time":"2018-08-17T15:17:29Z"}
+donkey logs test
+{"level":"info","msg":"init come on","time":"2018-08-17T15:17:29Z"}
+{"level":"info","msg":"Current location is /root/busybox","time":"2018-08-17T15:17:29Z"}
+{"level":"info","msg":"Find path /bin/echo","time":"2018-08-17T15:17:29Z"}
+hello
 ```
 
 ### 开发日志
@@ -116,5 +128,8 @@ Date: 2018.8.14
 - V4.0.0-Alpha 
 Date: 2018.8.17
 增加容器状态显示功能,删除Volume功能,它将在4.0版本会进行重构
+- V4.0.1-Alpha
+Date: 2018.8.17
+增加日志查看功能
 
 ![img-source-from-https://github.com/docker/dockercraft](https://github.com/docker/dockercraft/raw/master/docs/img/contribute.png?raw=true)
