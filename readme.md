@@ -113,8 +113,6 @@ Date: 2018.8.14
 - V3.5.1
 Date: 2018.8.14
 增加镜像打包功能， 增加容器后台运行功能
-- V4.0.0-Alpha
-- 增加容器状态显示功能
-- 删除Volume，功能在4.0版本会进行重构
+- V4.0.0-Alpha 增加容器状态显示功能,删除Volume功能,它将在4.0版本会进行重构
 
 ![img-source-from-https://github.com/docker/dockercraft](https://github.com/docker/dockercraft/raw/master/docs/img/contribute.png?raw=true)
