@@ -25,7 +25,7 @@ hello
     5 pts/0    00:00:00 ps
 
 # 执行命令
-donkey run -ti ls
+donkey run -ti busybox ls
 root@vagrant-ubuntu-trusty-64:/home/vagrant/works/donkey# donkey run -ti /bin/ls
 {"level":"info","msg":"init come on","time":"2018-07-28T18:01:48Z"}
 {"level":"info","msg":"command /bin/ls","time":"2018-07-28T18:01:48Z"}
@@ -33,21 +33,21 @@ root@vagrant-ubuntu-trusty-64:/home/vagrant/works/donkey# donkey run -ti /bin/ls
 container  donkey  main_command.go  main.go  readme.md	run.go
 
 #资源限制
-donkey  run -ti -m 100m -cpushare 512 /bin/sh
+donkey  run -ti -m 100m -cpushare 512 busybox sh
 {"level":"info","msg":"command all is /bin/sh","time":"2018-07-29T15:24:47Z"}
 {"level":"info","msg":"init come on","time":"2018-07-29T15:24:47Z"}
 {"level":"info","msg":"Find path /bin/sh","time":"2018-07-29T15:24:47Z"}
 #
 
 # 运行脚本
-root@vagrant-ubuntu-trusty-64:/home/vagrant/works/donkey# donkey  run -ti -m 100m  bash test.sh
+ donkey  run -ti -m 100m  busybox bash test.sh
 {"level":"info","msg":"command all is bash test.sh","time":"2018-07-31T16:08:55Z"}
 {"level":"info","msg":"init come on","time":"2018-07-31T16:08:55Z"}
 {"level":"info","msg":"Find path /bin/bash","time":"2018-07-31T16:08:55Z"}
 stress: info: [4] dispatching hogs: 0 cpu, 0 io, 1 vm, 0 hdd
 
 # 使用镜像 busybox
-donkey run -ti sh
+donkey run -ti busybox sh
 {"level":"info","msg":"command all is sh","time":"2018-08-04T10:02:24Z"}
 {"level":"info","msg":"init come on","time":"2018-08-04T10:02:24Z"}
 {"level":"info","msg":"Current location is /home/vagrant/works/donkey/images/busybox","time":"2018-08-04T10:02:24Z"}
@@ -59,7 +59,7 @@ Licensed under GPLv2. See source distribution for detailed
 copyright notices.
 
 # 映射目录
-donkey run -ti -v ./cgroups/:/cgroups sh
+donkey run -ti -v ./cgroups/:/cgroups busybox sh
 {"level":"error","msg":"Mkdir dir ./images/rw/ error. mkdir ./images/rw/: file exists","time":"2018-08-09T10:21:18Z"}
 {"level":"info","msg":"Mkdir parent dir ./cgroups/ error. mkdir ./cgroups/: file exists","time":"2018-08-09T10:21:18Z"}
 {"level":"info","msg":"[\"./cgroups/\" \"/cgroups\"]","time":"2018-08-09T10:21:18Z"}
@@ -71,11 +71,11 @@ donkey run -ti -v ./cgroups/:/cgroups sh
 bin      cgroups  dev      etc      home     proc     root     sys      tmp      usr      var
 
 # 镜像打包
-donkey commit busybox
-images/busybox.tar
+donkey commit testcontainer test
+test.tar
 
 # 后台运行
-donkey run -d echo hello
+donkey run -d busybox echo hello
 {"level":"info","msg":"createTty false","time":"2018-08-14T09:30:36Z"}
 {"level":"info","msg":"command all is echo hello","time":"2018-08-14T09:30:36Z"}
 
@@ -95,6 +95,17 @@ donkey logs test
 {"level":"info","msg":"Current location is /root/busybox","time":"2018-08-17T15:17:29Z"}
 {"level":"info","msg":"Find path /bin/echo","time":"2018-08-17T15:17:29Z"}
 hello
+
+#进入容器namespace
+donkey exec test sh
+{"level":"info","msg":"container pid 2668","time":"2018-08-18T16:59:00Z"}
+{"level":"info","msg":"command sh","time":"2018-08-18T16:59:00Z"}
+/ # ps
+PID   USER     TIME  COMMAND
+    1 root      0:00 top
+    4 root      0:00 sh
+    5 root      0:00 ps
+/ #
 ```
 
 ### 开发日志
@@ -131,5 +142,8 @@ Date: 2018.8.17
 - V4.0.1-Alpha
 Date: 2018.8.17
 增加日志查看功能
+- V4.1.1
+Date: 2018.8.19
+增加容器暂停、删除、Exec功能，重写Volume功能
 
 ![img-source-from-https://github.com/docker/dockercraft](https://github.com/docker/dockercraft/raw/master/docs/img/contribute.png?raw=true)
