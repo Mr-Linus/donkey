@@ -3,6 +3,9 @@
 #### 一个简单的用go实现的容器引擎
 
 ![donkey](./img/logo.png)
+
+> 本容器引擎在[xianlubird/mydocker](https://github.com/xianlubird/mydocker)基础上改进，实现了大部分基础功能，仍存在些许bug，不建议生产环境使用。
+
 ### 使用环境
 - OS: Ubuntu 14.04
 - Kernel: 3.13.0-153-generic
