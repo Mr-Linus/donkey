@@ -61,6 +61,7 @@ BusyBox is copyrighted by many authors between 1998-2015.
 Licensed under GPLv2. See source distribution for detailed
 copyright notices.
 
+
 # 映射目录
 donkey run -ti -v ./cgroups/:/cgroups busybox sh
 {"level":"error","msg":"Mkdir dir ./images/rw/ error. mkdir ./images/rw/: file exists","time":"2018-08-09T10:21:18Z"}
@@ -82,10 +83,12 @@ donkey run -d busybox echo hello
 {"level":"info","msg":"createTty false","time":"2018-08-14T09:30:36Z"}
 {"level":"info","msg":"command all is echo hello","time":"2018-08-14T09:30:36Z"}
 
+
 # 容器状态显示
 donkey ps
 ID           NAME         PID         STATUS      COMMAND     CREATED
 6575021233   6575021233   2731        running     top         2018-08-17 14:18:46
+
 
 #容器日志显示
 donkey run --name test -d echo hello
@@ -99,6 +102,7 @@ donkey logs test
 {"level":"info","msg":"Find path /bin/echo","time":"2018-08-17T15:17:29Z"}
 hello
 
+
 #进入容器namespace
 donkey exec test sh
 {"level":"info","msg":"container pid 2668","time":"2018-08-18T16:59:00Z"}
@@ -109,6 +113,16 @@ PID   USER     TIME  COMMAND
     4 root      0:00 sh
     5 root      0:00 ps
 / #
+
+# 传入环境变量
+donkey run -ti -e hello=test busybox sh
+{"level":"info","msg":"createTty true","time":"2018-08-19T14:07:20Z"}
+{"level":"info","msg":"command all is sh","time":"2018-08-19T14:07:20Z"}
+{"level":"info","msg":"init come on","time":"2018-08-19T14:07:20Z"}
+{"level":"info","msg":"Current location is /root/mnt/0263972906","time":"2018-08-19T14:07:20Z"}
+{"level":"info","msg":"Find path /bin/sh","time":"2018-08-19T14:07:20Z"}
+/ # echo $hello
+test
 ```
 
 ### 开发日志
@@ -148,5 +162,8 @@ Date: 2018.8.17
 - V4.1.1
 Date: 2018.8.19
 增加容器暂停、删除、Exec功能，重写Volume功能
+- V4.2.1
+Date: 2018.8.20
+增加容器环境变量传入功能
 
 ![img-source-from-https://github.com/docker/dockercraft](https://github.com/docker/dockercraft/raw/master/docs/img/contribute.png?raw=true)
