@@ -6,6 +6,7 @@
 
 > 本容器引擎在[xianlubird/mydocker](https://github.com/xianlubird/mydocker)基础上改进，实现了大部分基础功能，仍存在些许bug，不建议生产环境使用。
 
+
 ### 使用环境
 - OS: Ubuntu 14.04
 - Kernel: 3.13.0-153-generic
@@ -15,7 +16,7 @@
 ### 运行示例(root)
 ```bash
 # 执行容器终端
-donkey run -ti /bin/sh
+donkey run -ti busybox sh
 {"level":"info","msg":"init come on","time":"2018-07-28T18:02:10Z"}
 {"level":"info","msg":"command /bin/sh","time":"2018-07-28T18:02:10Z"}
 {"level":"info","msg":"command /bin/sh","time":"2018-07-28T18:02:10Z"}
@@ -124,6 +125,7 @@ donkey run -ti -e hello=test busybox sh
 / # echo $hello
 test
 ```
+
 
 ### 开发日志
 - V2.0.0
